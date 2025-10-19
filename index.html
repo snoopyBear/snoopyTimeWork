@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/fonts.css">
+</head>
+<body>
+        <div class="tareaFocusBackground" id="tareaFocus">
+            <div class="wrapperTareaFocused">
+                <div class="tareaFocused">
+                    <h1>Titulo</h1>
+                    <p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate purus quis lobortis tincidunt. Pellentesque laoreet mauris a ligula porttitor faucibus. Curabitur nec vulputate quam, et ultrices libero. Integer condimentum auctor finibus. Praesent justo felis, commodo quis condimentum at, dignissim at urna. Etiam lobortis dignissim ex sit amet suscipit. Suspendisse ac hendrerit ex, ac tincidunt nibh. Praesent ullamcorper porttitor nunc sit amet elementum. Cras blandit eleifend tincidunt. Nunc odio lorem, egestas ac consequat non, viverra eleifend massa. Maecenas et feugiat risus. Curabitur fermentum pretium mattis.
+Nulla feugiat id mauris at auctor. Sed dui lorem, vestibulum et laoreet quis, aliquam et ligula. Proin hendrerit nunc ut ipsum tempor rhoncus. Cras neque orci, cursus vitae ipsum vel, consequat ultricies felis. Suspendisse egestas mattis nibh ut finibus. Maecenas luctus est eget augue vehicula, ut rhoncus lectus maximus. Maecenas tempus, ex et euismod eleifend, dui turpis venenatis magna, ac faucibus turpis leo eget dui. Duis hendrerit sem augue, in cursus erat molestie sit amet. </p>
+                </div>
+            </div>
+        </div>
+    <div class="wrapper">
+        <div class="tareasWrapper">
+            <div class="botonesTareas">
+                <button id="porHacer">
+                    <img class="icon" src="svg/square.svg" alt="Checkbox" width="20" height="20" style="filter: brightness(0) invert(1);" />
+                    Por hacer
+                </button>
+                <button id="completadas">
+                    <img class="icon" src="svg/checkbox.svg" alt="Square" width="20" height="20" style="filter: brightness(0) invert(1);"/>
+                    Completadas
+                </button>
+            </div>
+            <h1>Tareas</h1>
+            <div class="crearTarea">
+                <div class="añadirTitulo">
+                    <input type="text" placeholder="Nueva tarea..." id="inputTarea">
+                    <button id="añadirTarea">Añadir</button>
+                </div>
+                <p id="añadirDescripcion">+ Añadir descripción</p>
+                <textarea name="" placeholder="Descripcion..." id="descripcion"></textarea>
+            </div>
+            <div class="tareas" id="tareas">
+                <div class="tarea">
+                    <div class="texto" onclick="focustTarea(this)">
+                        <h1 style="font-size: 16px;"><img class="icon" src="svg/bold_square.svg" alt="Checkbox" width="10" height="10" style="filter: brightness(0) invert(1);" />
+                             Test</h1>
+                        <p>Descripcion texto texto texto texto texto texto texto texto</p>
+                    </div>
+                    <button class="completar" onclick="tareaCompletada(this)">Completada</button>
+                </div>
+                <div class="tarea">
+                    <div class="texto" onclick="focustTarea(this)">
+                        <h1 style="font-size: 16px;">
+                            <img class="icon" src="svg/bold_square.svg" alt="Checkbox" width="10" height="10" style="filter: brightness(0) invert(1);" />
+                            Test</h1>
+                    </div>
+                    <button class="completar" onclick="tareaCompletada(this)">Completada</button>
+                </div>
+            </div>
+        </div>
+        <div class="cronometro">
+            <div class="eleccionTipo">
+                <button id="elegirReloj">Cronometro</button>
+                <button id="elegirCuentaAtras">Cuenta Atras</button>
+            </div>
+            <div class="cronometroUI">
+                <div class="reloj" id="reloj">
+                    <h1 id="cronometro">00:00:00</h1>
+                    <div class="botones">
+                        <button id="startReloj">Empezar</button>
+                        <button id="pararReloj">Parar</button>
+                        <button id="reiniciarReloj">Reiniciar</button>
+                    </div>
+                </div>
+                <div class="cuentaAtras" id="cuentaAtras">
+                    <h1 id="cuentaAtrasTexto">00:00:00</h1>
+                    <div class="insertarTiempo">
+                        <div class="filaInsertarTiempo">
+                            <button class="insertarNum">0</button>
+                            <button class="insertarNum">1</button>
+                            <button class="insertarNum">2</button>
+                            <button class="insertarNum">3</button>
+                            <button class="insertarNum">4</button>
+                        </div>
+                        <div class="filaInsertarTiempo">
+                            <button class="insertarNum">5</button>
+                            <button class="insertarNum">6</button>
+                            <button class="insertarNum">7</button>
+                            <button class="insertarNum">8</button>
+                            <button class="insertarNum">9</button>
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button id="startCuentaAtras">Empezar</button>
+                        <button id="pararCuentaAtras">Parar</button>
+                        <button id="reiniciarCuentaAtras">Reiniciar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/tareas.js"></script>
+    <script src="js/cronometro.js"></script>
+    <script src="js/cuentaAtras.js"></script>
+    <script src="js/menuRelojes.js"></script>
+</body>
+</html>
