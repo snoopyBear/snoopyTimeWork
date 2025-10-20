@@ -274,12 +274,13 @@ button {
     margin-top: 10px;
 }
 
-.notasTopBar button {
+.notasTopBar > button, .setColor > button {
+    margin: 5px;
     border: 2px solid #3F3F46;
     background-color: transparent;
     padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
     border-radius: 10px;
 }
 
@@ -291,8 +292,54 @@ button {
     padding: 20px;
     height: 100%;
     border: 2px solid #3F3F46;
+    font-size: 16px;
+    overflow: hidden;
 }
 
 #textArea:focus {
     outline: none;
+}
+
+.setColor {
+    position: relative;
+}
+
+#panelColores {
+    position: absolute;
+    height: auto; 
+    display: grid;
+    padding: 10px; 
+    background-color: #333333;
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+    display: none;
+}
+
+.filaColores {
+    display: flex;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.filaColores button {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.color {
+    background-color: red;
+    height: 20px; 
+    width: 20px; 
+    border-radius: 50%;
+    border: none;
+    cursor: pointer; 
+    transition: transform 0.2s; 
+}
+
+.color:hover {
+    transform: scale(1.1); 
+}
+
+::selection {
+  background-color: rgba(88, 88, 88, 0.5);
 }
