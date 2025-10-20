@@ -7,7 +7,7 @@ html, body {
 
 .wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-column-gap: 10px;
     height: 100%;
     grid-template-rows: 1fr;
@@ -56,7 +56,7 @@ button {
 .tareasWrapper {
     grid-column: 1;
     padding: 20px;
-    width: 530px;
+    width: 400px;
 }
 
 .tareasWrapper > h1 {
@@ -66,7 +66,7 @@ button {
 .tareasWrapper input, .tareasWrapper textarea {
     background-color: transparent;
     height: 4vh;
-    width: 80%;
+    width: 70%;
     padding-left: 10px;
     border-radius: 10px;
     border: 2px solid #3F3F46;
@@ -139,7 +139,7 @@ button {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 40ch;
+    width: 25ch;
 }
 
 .texto h1 {
@@ -153,12 +153,14 @@ button {
     border-radius: 10px;
     background-color: #3F3F46;
     border: 2px solid #3F3F46;
+    margin-left: 20zpx;
 }
 
 .cronometro {
-    grid-column: 2/4;
+    grid-column: 5;
     padding: 20px;
     box-sizing: border-box;
+    width: 500px;
 }
 
 .cronometroUI {
@@ -240,7 +242,6 @@ button {
 }
 
 .tareaFocused {
-    /* width: 500px; */
     min-width: 300px;
     max-width: 500px;
     background-color: #3F3F46;
@@ -254,4 +255,44 @@ button {
 
 .tareaFocused h1 {
     text-align: center;
+}
+
+.notas {
+    width: 100%;
+    grid-column: 2 / 5;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.notasTopBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    /* border: 1px solid pink; */
+    margin-top: 10px;
+}
+
+.notasTopBar button {
+    border: 2px solid #3F3F46;
+    background-color: transparent;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+}
+
+#textArea {
+    margin: 20px;
+    background-color: transparent;
+    resize: none;
+    border-radius: 20px;
+    padding: 20px;
+    height: 100%;
+    border: 2px solid #3F3F46;
+}
+
+#textArea:focus {
+    outline: none;
 }
