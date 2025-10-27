@@ -274,7 +274,7 @@ button {
     margin-top: 10px;
 }
 
-.notasTopBar > button, .setColor > button {
+.notasTopBar > button, .notasTopBar > div > button {
     margin: 5px;
     border: 2px solid #3F3F46;
     background-color: transparent;
@@ -293,7 +293,7 @@ button {
     height: 100%;
     border: 2px solid #3F3F46;
     font-size: 16px;
-    overflow: hidden;
+    overflow-wrap: break-word;
 }
 
 #textArea:focus {
@@ -304,7 +304,7 @@ button {
     position: relative;
 }
 
-#panelColores {
+.notasTopBar > div > div {
     position: absolute;
     height: auto; 
     display: grid;
@@ -342,4 +342,16 @@ button {
 
 ::selection {
   background-color: rgba(88, 88, 88, 0.5);
+}
+
+#panelFuentes button {
+    padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: transparent;
+    border: none;
+}
+
+#panelFuentes button:hover {
+    background-color:#3F3F46 ;
 }
