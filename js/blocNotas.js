@@ -136,7 +136,6 @@ function cambiarColorTexto(boton) {
                 
 
             }
-            
 
             if ((numSpan == 1 && numTexto == 0) || (numTexto == 1 && numSpan == 0)) {
 
@@ -146,7 +145,7 @@ function cambiarColorTexto(boton) {
 
                     if (element.nodeName == "SPAN" || element.nodeName == "#text") {
                         
-                        generarSpanUnico(selection, element)
+                        generarSpanUnico(selection, element, boton)
 
                         limpieza();
                         return;
@@ -154,8 +153,6 @@ function cambiarColorTexto(boton) {
                     
                 }
             }
-
-            console.log(listaNodosValidos);
 
             for (let index = 0; index < listaNodosValidos.length; index++) {
                 const element = listaNodosValidos[index];
@@ -182,8 +179,6 @@ function cambiarColorTexto(boton) {
                     span.innerText = textoComun;
 
                     if (index == 0){
-
-                        // span.style.fontSize = element.style.fontSize;
                         
                         if (element.nodeName == "SPAN") {
                             element.innerText = element.innerText.replace(new RegExp(`${textoComun}$`), "");
@@ -191,12 +186,12 @@ function cambiarColorTexto(boton) {
                             element.data = element.data.replace(new RegExp(`${textoComun}$`), "");
                         }
 
-                        // element.innerText = element.innerText.replace(new RegExp(`${textoComun}$`), "");
                         textoTotal = textoTotal.replace(new RegExp(`^${textoComun}`), "");
                         
                         element.parentNode.insertBefore(span, element.nextSibling);
                         
-                    } else if (index == listaNodosValidos.length -1 ){
+                    } 
+                    else if (index == listaNodosValidos.length -1 ){
 
                         if (element.nodeName == "SPAN") {
                             element.innerText = element.innerText.replace(new RegExp(`^${textoComun}`), "");
@@ -204,12 +199,12 @@ function cambiarColorTexto(boton) {
                             element.data = element.data.replace(new RegExp(`^${textoComun}`), "");
                         }
 
-                        // element.innerText = element.innerText.replace(new RegExp(`^${textoComun}`), "");
                         textoTotal = textoTotal.replace(new RegExp(`^${textoComun}`), "");
                         
                         element.parentNode.insertBefore(span, element);
                         
-                    } else {
+                    } 
+                    else {
                         
                         textoTotal = textoTotal.replace(textoComun, "");
 
@@ -217,17 +212,18 @@ function cambiarColorTexto(boton) {
                         element.parentNode.removeChild(element);
 
                     }
+                    
                 }
 
             }
 
         }
-
+    
     limpieza();
     panelColores.style.display = "none";
 }
 
-function generarSpanUnico(selection, element){ // Genera 1 solo span cuando estÃ© reemplazando 1 solo tag
+function generarSpanUnico(selection, element, boton){
     let spanBool;
 
     if (element.nodeName == "SPAN"){
@@ -252,7 +248,7 @@ function generarSpanUnico(selection, element){ // Genera 1 solo span cuando estÃ
     const selectedSpan = document.createElement("span");
     selectedSpan.innerText = selectedText;
     selectedSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
-    selectedSpan.style.color = "red";
+    selectedSpan.style.color = boton.value;
 
     const afterSpan = document.createElement("span");
     afterSpan.innerText = afterText;
