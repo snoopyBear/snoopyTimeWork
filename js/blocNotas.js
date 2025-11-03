@@ -111,47 +111,97 @@ function cambiarTamanyoTexto(boton) {
     panelFuentes.style.display = "none";
 }
 
+function cambiarTamanyoTexto(boton){
+    const selection = window.getSelection();
+    if (!selection.isCollapsed) {
+        const nodes = runScanNodes(selection);
+        let textoTotal = selection.toString()
+
+        let [listaNodosValidos, numSpan, numTexto] = getNodosValidos(nodes);
+
+        if (comprobarUnico(numSpan, numTexto, nodes, selection, boton, false)) {
+            return;
+        }
+
+        for (let index = 0; index < listaNodosValidos.length; index++) {
+            const element = listaNodosValidos[index];
+            let textoComun;
+            
+
+            if (element.nodeName == "SPAN" || element.nodeName == "#text") {
+
+                const span = document.createElement("span");
+                span.style.fontSize = `${boton.value}px`;
+
+                if (element.nodeName == "SPAN") {
+                    span.style.color = element.style.color;
+                } else {
+                    span.style.color = "white";
+                }
+                
+                if (element.nodeName == "SPAN") {
+                    textoComun = obtenerTextoComun(element.innerText, textoTotal);
+                } else {
+                    textoComun = textoComun = obtenerTextoComun(element.data, textoTotal)
+                }
+
+                span.innerText = textoComun;
+
+                if (index == 0){
+                    
+                    if (element.nodeName == "SPAN") {
+                        element.innerText = element.innerText.replace(new RegExp(`${textoComun}$`), "");
+                    } else {
+                        element.data = element.data.replace(new RegExp(`${textoComun}$`), "");
+                    }
+
+                    textoTotal = textoTotal.replace(new RegExp(`^${textoComun}`), "");
+                    
+                    element.parentNode.insertBefore(span, element.nextSibling);
+                    
+                } 
+                else if (index == listaNodosValidos.length -1 ){
+
+                    if (element.nodeName == "SPAN") {
+                        element.innerText = element.innerText.replace(new RegExp(`^${textoComun}`), "");
+                    } else {
+                        element.data = element.data.replace(new RegExp(`^${textoComun}`), "");
+                    }
+
+                    textoTotal = textoTotal.replace(new RegExp(`^${textoComun}`), "");
+                    
+                    element.parentNode.insertBefore(span, element);
+                    
+                } 
+                else {
+                    
+                    textoTotal = textoTotal.replace(textoComun, "");
+
+                    element.parentNode.insertBefore(span, element)
+                    element.parentNode.removeChild(element);
+
+                }
+                
+            }
+
+        }
+
+    }
+    limpieza();
+    panelFuentes.style.display = "none";
+}
+
 function cambiarColorTexto(boton) {
     const selection = window.getSelection();
         if (!selection.isCollapsed) {
             
             const nodes = runScanNodes(selection);
-
-            let numSpan = 0;
-            let numTexto = 0;
             let textoTotal = selection.toString()
 
-            let listaNodosValidos = [];
+            let [listaNodosValidos, numSpan, numTexto] = getNodosValidos(nodes);
 
-            for (let index = 0; index < nodes.length; index++) {
-                const element = nodes[index];
-                if (element.nodeName == "SPAN") {
-                    numSpan++;
-                    listaNodosValidos.push(element);
-                    index++;
-                } else if (element.nodeName == "#text"){
-                    numTexto++;
-                    listaNodosValidos.push(element);
-                }
-                
-
-            }
-
-            if ((numSpan == 1 && numTexto == 0) || (numTexto == 1 && numSpan == 0)) {
-
-                for (let index = 0; index < nodes.length; index++) {
-
-                    const element = nodes[index];
-
-                    if (element.nodeName == "SPAN" || element.nodeName == "#text") {
-                        
-                        generarSpanUnico(selection, element, boton)
-
-                        limpieza();
-                        return;
-                    }
-                    
-                }
+            if (comprobarUnico(numSpan, numTexto, nodes, selection, boton, true)) {
+                return;
             }
 
             for (let index = 0; index < listaNodosValidos.length; index++) {
@@ -223,7 +273,56 @@ function cambiarColorTexto(boton) {
     panelColores.style.display = "none";
 }
 
-function generarSpanUnico(selection, element, boton){
+function comprobarUnico(numSpan, numTexto, nodes, selection, boton, color){
+    if ((numSpan == 1 && numTexto == 0) || (numTexto == 1 && numSpan == 0)) {
+
+        for (let index = 0; index < nodes.length; index++) {
+
+            const element = nodes[index];
+
+            if (element.nodeName == "SPAN" || element.nodeName == "#text") {
+
+                generarSpanUnico(selection, element, boton.value, color)
+
+                limpieza();
+                if (color){
+                    panelColores.style.display = "none";
+                } else {
+                    panelFuentes.style.display = "none";
+                }
+                
+                return true;
+            }
+            
+        }
+    }
+}
+
+function getNodosValidos(nodes){
+
+    let numSpan = 0;
+    let numTexto = 0;
+    let listaNodosValidos = [];
+
+    for (let index = 0; index < nodes.length; index++) {
+
+        const element = nodes[index];
+        if (element.nodeName == "SPAN") {
+            numSpan++;
+            listaNodosValidos.push(element);
+            index++;
+        } else if (element.nodeName == "#text"){
+            numTexto++;
+            listaNodosValidos.push(element);
+        }
+        
+    }
+
+    return [listaNodosValidos, numSpan, numTexto];
+
+}
+
+function generarSpanUnico(selection, element, valor, color){
     let spanBool;
 
     if (element.nodeName == "SPAN"){
@@ -244,15 +343,24 @@ function generarSpanUnico(selection, element, boton){
     const beforeSpan = document.createElement("span");
     beforeSpan.innerText = beforeText;
     beforeSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
+    beforeSpan.style.color = (!color) ? valor : "white ";
 
     const selectedSpan = document.createElement("span");
     selectedSpan.innerText = selectedText;
-    selectedSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
-    selectedSpan.style.color = boton.value;
+
+    if (color) {
+        selectedSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
+        selectedSpan.style.color = valor;
+    } else {
+        selectedSpan.style.fontSize = `${valor}px`;
+        selectedSpan.style.color = (spanBool) ? element.style.color : "white";
+    }
 
     const afterSpan = document.createElement("span");
     afterSpan.innerText = afterText;
     afterSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
+
+    
 
     element.parentNode.insertBefore(beforeSpan, element);
     element.parentNode.insertBefore(selectedSpan, element);

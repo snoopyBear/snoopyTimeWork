@@ -2,12 +2,13 @@
 
 ## Done
 
-Boton cambiar de color el texto
+Boton cambiar de color el texto  
+Boton cambiar tamaño el texto  
+Añadir salto de linea cuando haya overflow horizontal  
 
 ## TODO
 
-Boton cambiar tamaño el texto  
-Añadir salto de linea cuando haya overflow horizontal  
+Hacer funcion general de cambio de estilo con parametro de lo que se cambia para que no haya redundancia  
 Poder guardar archivo  
 Sonido cuando suene la cuenta atras a 0 y parar  
 La hora  
