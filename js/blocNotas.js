@@ -46,7 +46,7 @@ colores.forEach(fila => {
         boton.style.backgroundColor = color;
         boton.value = color;
         boton.onclick = function () {
-            cambiarColorTexto(this);
+            cambiarEstilo(this, "color");
         };
 
         filaDiv.appendChild(boton);
@@ -64,54 +64,86 @@ tamanyos.forEach(tamanyo => {
     boton.innerText = tamanyo;
 
     boton.onclick = function() {
-        cambiarTamanyoTexto(this);
+        cambiarEstilo(this, "tamaño");
     };
 
     panelFuentes.appendChild(boton);
 
 })
 
-// function cambiarColorTexto(boton){
-//     const selection = window.getSelection();
+function comprobarUnico2(numSpan, numTexto, nodes, selection, boton, estilo){
+    if ((numSpan == 1 && numTexto == 0) || (numTexto == 1 && numSpan == 0)) {
 
-//     if (selection.rangeCount > 0) {
-        
-//         const range = selection.getRangeAt(0);
-        
-//         const span = document.createElement('span');
-//         span.style.color = boton.value;
-//         span.innerHTML = selection.toString().replace(/\n/g, "<br>");
-        
-//         range.deleteContents();
-//         range.insertNode(span);
+        for (let index = 0; index < nodes.length; index++) {
 
-//     }
+            const element = nodes[index];
 
-//     panelColores.style.display = "none";
+            if (element.nodeName == "SPAN" || element.nodeName == "#text") {
 
-// }
+                generarSpanUnico2(selection, element, boton.value, estilo)
 
-function cambiarTamanyoTexto(boton) {
-    const selection = window.getSelection();
-
-    if (selection.rangeCount > 0) {
-        
-        const range = selection.getRangeAt(0);
-        
-        const span = document.createElement('span');
-        span.style.fontSize = `${boton.value}px`;
-        span.innerHTML = selection.toString().replace(/\n/g, "<br>");
-        span.style.color = window.getComputedStyle(selection.anchorNode.parentElement, null).getPropertyValue('color');
-        
-        range.deleteContents();
-        range.insertNode(span);
-
+                limpieza();
+                if (estilo == "color"){
+                    panelColores.style.display = "none";
+                } else if (estilo == "tamaño"){
+                    panelFuentes.style.display = "none";
+                }
+                
+                return true;
+            }
+            
+        }
     }
-
-    panelFuentes.style.display = "none";
 }
 
-function cambiarTamanyoTexto(boton){
+function generarSpanUnico2(selection, element, valor, estilo){
+    let spanBool;
+
+    if (element.nodeName == "SPAN"){
+        spanBool = true;
+    } else {
+        spanBool = false;
+    }
+
+    
+    let textContent = (spanBool) ? element.innerText : element.data.replace("\n", "");
+    let selectionStart = selection.anchorOffset;
+    let selectionEnd = selection.focusOffset;
+
+    let beforeText = textContent.substring(0, selectionStart);
+    let selectedText = textContent.substring(selectionStart, selectionEnd);
+    let afterText = textContent.substring(selectionEnd);
+
+    const beforeSpan = document.createElement("span");
+    beforeSpan.innerText = beforeText;
+    beforeSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
+
+    const selectedSpan = document.createElement("span");
+    selectedSpan.innerText = selectedText;
+
+    if (estilo == "color") {
+        selectedSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
+        selectedSpan.style.color = valor;
+    } else {
+        selectedSpan.style.fontSize = `${valor}px`;
+        selectedSpan.style.color = (spanBool) ? element.style.color : "white";
+    }
+
+    const afterSpan = document.createElement("span");
+    afterSpan.innerText = afterText;
+    afterSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
+
+    
+
+    element.parentNode.insertBefore(beforeSpan, element);
+    element.parentNode.insertBefore(selectedSpan, element);
+    element.parentNode.insertBefore(afterSpan, element);
+
+    element.parentNode.removeChild(element);
+}
+
+function cambiarEstilo(boton, estilo){
+
     const selection = window.getSelection();
     if (!selection.isCollapsed) {
         const nodes = runScanNodes(selection);
@@ -119,7 +151,7 @@ function cambiarTamanyoTexto(boton){
 
         let [listaNodosValidos, numSpan, numTexto] = getNodosValidos(nodes);
 
-        if (comprobarUnico(numSpan, numTexto, nodes, selection, boton, false)) {
+        if (comprobarUnico2(numSpan, numTexto, nodes, selection, boton, estilo)) {
             return;
         }
 
@@ -131,12 +163,20 @@ function cambiarTamanyoTexto(boton){
             if (element.nodeName == "SPAN" || element.nodeName == "#text") {
 
                 const span = document.createElement("span");
-                span.style.fontSize = `${boton.value}px`;
-
-                if (element.nodeName == "SPAN") {
-                    span.style.color = element.style.color;
-                } else {
-                    span.style.color = "white";
+                if (estilo == "color") {
+                    span.style.color = boton.value;
+                    if (element.nodeName == "SPAN") {
+                        span.style.fontSize = element.style.fontSize;
+                    } else {
+                        span.style.fontSize = "16px";
+                    }
+                } else if (estilo == "tamaño") {
+                    span.style.fontSize = `${boton.value}px`;
+                    if (element.nodeName == "SPAN") {
+                        span.style.color = element.style.color;
+                    } else {
+                        span.style.color = "white";
+                    }
                 }
                 
                 if (element.nodeName == "SPAN") {
@@ -188,113 +228,11 @@ function cambiarTamanyoTexto(boton){
 
     }
     limpieza();
-    panelFuentes.style.display = "none";
-}
-
-function cambiarColorTexto(boton) {
-    const selection = window.getSelection();
-        if (!selection.isCollapsed) {
-            
-            const nodes = runScanNodes(selection);
-            let textoTotal = selection.toString()
-
-            let [listaNodosValidos, numSpan, numTexto] = getNodosValidos(nodes);
-
-            if (comprobarUnico(numSpan, numTexto, nodes, selection, boton, true)) {
-                return;
-            }
-
-            for (let index = 0; index < listaNodosValidos.length; index++) {
-                const element = listaNodosValidos[index];
-                let textoComun;
-                
-
-                if (element.nodeName == "SPAN" || element.nodeName == "#text") {
-
-                    const span = document.createElement("span");
-                    span.style.color = boton.value;
-
-                    if (element.nodeName == "SPAN") {
-                        span.style.fontSize = element.style.fontSize;
-                    } else {
-                        span.style.fontSize = "16px";
-                    }
-                    
-                    if (element.nodeName == "SPAN") {
-                        textoComun = obtenerTextoComun(element.innerText, textoTotal);
-                    } else {
-                        textoComun = textoComun = obtenerTextoComun(element.data, textoTotal)
-                    }
-
-                    span.innerText = textoComun;
-
-                    if (index == 0){
-                        
-                        if (element.nodeName == "SPAN") {
-                            element.innerText = element.innerText.replace(new RegExp(`${textoComun}$`), "");
-                        } else {
-                            element.data = element.data.replace(new RegExp(`${textoComun}$`), "");
-                        }
-
-                        textoTotal = textoTotal.replace(new RegExp(`^${textoComun}`), "");
-                        
-                        element.parentNode.insertBefore(span, element.nextSibling);
-                        
-                    } 
-                    else if (index == listaNodosValidos.length -1 ){
-
-                        if (element.nodeName == "SPAN") {
-                            element.innerText = element.innerText.replace(new RegExp(`^${textoComun}`), "");
-                        } else {
-                            element.data = element.data.replace(new RegExp(`^${textoComun}`), "");
-                        }
-
-                        textoTotal = textoTotal.replace(new RegExp(`^${textoComun}`), "");
-                        
-                        element.parentNode.insertBefore(span, element);
-                        
-                    } 
-                    else {
-                        
-                        textoTotal = textoTotal.replace(textoComun, "");
-
-                        element.parentNode.insertBefore(span, element)
-                        element.parentNode.removeChild(element);
-
-                    }
-                    
-                }
-
-            }
-
-        }
-    
-    limpieza();
-    panelColores.style.display = "none";
-}
-
-function comprobarUnico(numSpan, numTexto, nodes, selection, boton, color){
-    if ((numSpan == 1 && numTexto == 0) || (numTexto == 1 && numSpan == 0)) {
-
-        for (let index = 0; index < nodes.length; index++) {
-
-            const element = nodes[index];
-
-            if (element.nodeName == "SPAN" || element.nodeName == "#text") {
-
-                generarSpanUnico(selection, element, boton.value, color)
-
-                limpieza();
-                if (color){
-                    panelColores.style.display = "none";
-                } else {
-                    panelFuentes.style.display = "none";
-                }
-                
-                return true;
-            }
-            
-        }
+    if (estilo == "color"){
+        panelColores.style.display = "none";
+    } else if (estilo == "tamaño")
+    {
+        panelFuentes.style.display = "none";
     }
 }
 
@@ -320,53 +258,6 @@ function getNodosValidos(nodes){
 
     return [listaNodosValidos, numSpan, numTexto];
 
-}
-
-function generarSpanUnico(selection, element, valor, color){
-    let spanBool;
-
-    if (element.nodeName == "SPAN"){
-        spanBool = true;
-    } else {
-        spanBool = false;
-    }
-
-    
-    let textContent = (spanBool) ? element.innerText : element.data.replace("\n", "");
-    let selectionStart = selection.anchorOffset;
-    let selectionEnd = selection.focusOffset;
-
-    let beforeText = textContent.substring(0, selectionStart);
-    let selectedText = textContent.substring(selectionStart, selectionEnd);
-    let afterText = textContent.substring(selectionEnd);
-
-    const beforeSpan = document.createElement("span");
-    beforeSpan.innerText = beforeText;
-    beforeSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
-    beforeSpan.style.color = (!color) ? valor : "white ";
-
-    const selectedSpan = document.createElement("span");
-    selectedSpan.innerText = selectedText;
-
-    if (color) {
-        selectedSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
-        selectedSpan.style.color = valor;
-    } else {
-        selectedSpan.style.fontSize = `${valor}px`;
-        selectedSpan.style.color = (spanBool) ? element.style.color : "white";
-    }
-
-    const afterSpan = document.createElement("span");
-    afterSpan.innerText = afterText;
-    afterSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
-
-    
-
-    element.parentNode.insertBefore(beforeSpan, element);
-    element.parentNode.insertBefore(selectedSpan, element);
-    element.parentNode.insertBefore(afterSpan, element);
-
-    element.parentNode.removeChild(element);
 }
 
 function runScanNodes(selection){
