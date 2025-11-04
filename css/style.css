@@ -1,3 +1,19 @@
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
 html, body {
     margin: 0px;
     padding: 0px;
@@ -156,6 +172,10 @@ button {
     margin-left: 20zpx;
 }
 
+.reloj {
+    display: none;
+}
+
 .cronometro {
     grid-column: 5;
     padding: 20px;
@@ -176,11 +196,6 @@ button {
     font-family: "Ubuntu-Medium";
     letter-spacing: 2px;
     font-size: 100px;
-}
-
-.eleccionTipo {
-    display: flex;
-    justify-content: space-around;
 }
 
 .botones {
@@ -209,10 +224,11 @@ button {
 
 .eleccionTipo button {
     font-size: 16px;
+    background-color: transparent;
 }
 
-#elegirCuentaAtras {
-    background-color: transparent;
+#elegirHora {
+    background-color: #3F3F46;
 }
 
 .filaInsertarTiempo {
@@ -344,7 +360,7 @@ button {
   background-color: rgba(88, 88, 88, 0.5);
 }
 
-#panelFuentes button {
+#panelFuentes button, .efecto {
     padding: 5px;
     padding-left: 8px;
     padding-right: 8px;
@@ -354,4 +370,16 @@ button {
 
 #panelFuentes button:hover {
     background-color:#3F3F46 ;
+}
+
+.efecto:hover {
+    background-color: #3F3F46;
+}
+
+.hora {
+    text-align: center;
+}
+
+.hora h2, .hora h1 {
+    margin: 0px;
 }

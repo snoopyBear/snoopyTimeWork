@@ -1,12 +1,13 @@
 const textArea = document.getElementById("textArea");
-const botonColor = document.getElementById("testColor");
-const botonAgrandar = document.getElementById("testAgrandar");
 
 const panelColores = document.getElementById("panelColores");
 const mostrarPanelColores = document.getElementById("mostrarPanelColores");
 
 const mostrarPanelTamanyo = document.getElementById("setFontSize");
 const panelFuentes = document.getElementById("panelFuentes");
+
+const mostrarPanelEfectos = document.getElementById("setFontEffect");
+const panelEfectos = document.getElementById("panelEfectos");
 
 const colores = [["#000101", "#444444", "#656565", "#999999", "#b7b7b7", "#cbcbcb", "#d9d9d9", "#efefef", "#f4f4f4", "#fdfdfd"],
                 ["#970201", "#fe0000", "#fd9800", "#fefe02", "#01ff00", "#37761e", "#4988e8", "#0000f9", "#9c01fd", "#fd00ff"],
@@ -18,6 +19,8 @@ const colores = [["#000101", "#444444", "#656565", "#999999", "#b7b7b7", "#cbcbc
                 ["#5a0f02", "#640001", "#753f06", "#7d5f00", "#37761e", "#0b2f3a", "#1f4487", "#073663", "#1f124e", "#4b112f"]];
 
 const tamanyos = ["8", "9", "10", "11", "12", "14", "18", "24", "30", "36", "48", "60", "72", "96"];
+
+const efectos = ["bold", "italic", "underline", "strikethrough"]
 
 mostrarPanelColores.onclick = function(){
     if (panelColores.style.display == "block"){
@@ -32,6 +35,14 @@ mostrarPanelTamanyo.onclick = function(){
         panelFuentes.style.display = "none";
     } else {
         panelFuentes.style.display = "grid";
+    }
+}
+
+mostrarPanelEfectos.onclick = function () {
+    if (panelEfectos.style.display == "grid"){
+        panelEfectos.style.display = "none";
+    } else {
+        panelEfectos.style.display = "grid";
     }
 }
 
@@ -71,7 +82,21 @@ tamanyos.forEach(tamanyo => {
 
 })
 
-function comprobarUnico2(numSpan, numTexto, nodes, selection, boton, estilo){
+efectos.forEach(efecto => {
+    let boton = document.createElement("button");
+    boton.setAttribute("class", "efecto");
+    boton.value = efecto;
+    boton.innerText = efecto;
+
+    boton.onclick = function() {
+        cambiarEstilo(this, "efecto");
+    }
+
+    panelEfectos.appendChild(boton);
+
+})
+
+function comprobarUnico(numSpan, numTexto, nodes, selection, boton, estilo){
     if ((numSpan == 1 && numTexto == 0) || (numTexto == 1 && numSpan == 0)) {
 
         for (let index = 0; index < nodes.length; index++) {
@@ -80,7 +105,7 @@ function comprobarUnico2(numSpan, numTexto, nodes, selection, boton, estilo){
 
             if (element.nodeName == "SPAN" || element.nodeName == "#text") {
 
-                generarSpanUnico2(selection, element, boton.value, estilo)
+                generarSpanUnico(selection, element, boton.value, estilo)
 
                 limpieza();
                 if (estilo == "color"){
@@ -96,7 +121,7 @@ function comprobarUnico2(numSpan, numTexto, nodes, selection, boton, estilo){
     }
 }
 
-function generarSpanUnico2(selection, element, valor, estilo){
+function generarSpanUnico(selection, element, valor, estilo){
     let spanBool;
 
     if (element.nodeName == "SPAN"){
@@ -124,9 +149,15 @@ function generarSpanUnico2(selection, element, valor, estilo){
     if (estilo == "color") {
         selectedSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
         selectedSpan.style.color = valor;
-    } else {
+    } else if (estilo == "tamaño"){
         selectedSpan.style.fontSize = `${valor}px`;
         selectedSpan.style.color = (spanBool) ? element.style.color : "white";
+    } else if (estilo == "efecto") {
+        selectedSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
+        selectedSpan.style.color = (spanBool) ? element.style.color : "white";
+        selectedSpan.setAttribute("class", valor);
+        console.log(element.className);
+        
     }
 
     const afterSpan = document.createElement("span");
@@ -151,7 +182,7 @@ function cambiarEstilo(boton, estilo){
 
         let [listaNodosValidos, numSpan, numTexto] = getNodosValidos(nodes);
 
-        if (comprobarUnico2(numSpan, numTexto, nodes, selection, boton, estilo)) {
+        if (comprobarUnico(numSpan, numTexto, nodes, selection, boton, estilo)) {
             return;
         }
 
