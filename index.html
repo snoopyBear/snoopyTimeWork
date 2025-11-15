@@ -6,6 +6,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/widthChanger.css">
+    <link rel="stylesheet" href="css/tareas.css">
+    <link rel="stylesheet" href="css/blocNotas.css">
+    <link rel="stylesheet" href="css/relojes.css">
 </head>
 <body>
         <div class="tareaFocusBackground" id="tareaFocus">
@@ -19,7 +24,7 @@ Nulla feugiat id mauris at auctor. Sed dui lorem, vestibulum et laoreet quis, al
             </div>
         </div>
     <div class="wrapper">
-        <div class="tareasWrapper">
+        <div class="tareasWrapper" id="tareasWrapper">
             <div class="botonesTareas">
                 <button id="porHacer">
                     <img class="icon" src="svg/square.svg" alt="Checkbox" width="20" height="20" style="filter: brightness(0) invert(1);" />
@@ -58,7 +63,10 @@ Nulla feugiat id mauris at auctor. Sed dui lorem, vestibulum et laoreet quis, al
                 </div>
             </div>
         </div>
-        <div class="notas">
+        <div class="changeWidth" id="barraTareasBloc">
+
+        </div>
+        <div class="notas" id="notasWrapper">
             <div class="notasTopBar">
                 <div class="setFontSize">
                     <button id="setFontSize">Tamaño</button>
@@ -82,6 +90,9 @@ Nulla feugiat id mauris at auctor. Sed dui lorem, vestibulum et laoreet quis, al
             <div id="textArea" contenteditable="true" spellcheck="false">
                 <!-- test test <span style="font-size: 24px;">Spanan 1 </span><span>Span 2</span><span> Span 3</span> a -->
             </div>
+        </div>
+        <div class="changeWidth">
+            
         </div>
         <div class="cronometro">
             <div class="eleccionTipo">
@@ -135,5 +146,6 @@ Nulla feugiat id mauris at auctor. Sed dui lorem, vestibulum et laoreet quis, al
     <script src="js/menuRelojes.js"></script>
     <script src="js/blocNotas.js"></script>
     <script src="js/hora.js"></script>
+    <script src="js/general.js"></script>
 </body>
 </html>

@@ -1,0 +1,75 @@
+.cronometroUI {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 80px);
+}
+
+.cronometroUI h1 {
+    text-align: center;
+    font-family: "Ubuntu-Medium";
+    letter-spacing: 2px;
+    font-size: 100px;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3px;
+}
+
+.reloj {
+    display: none;
+}
+
+.cronometro {
+    grid-column: 5;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 500px;
+}
+
+.cronometro button {
+    padding: 20px;
+    font-size: 24px;
+    border-radius: 10px;
+    border: none;
+    font-family: "PierSans-Medium";
+    background-color: #3F3F46;
+    border: 2px solid #3F3F46;
+    margin: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.eleccionTipo {
+    display: flex;
+    justify-content: center;
+}
+
+.eleccionTipo button {
+    font-size: 16px;
+    background-color: transparent;
+}
+
+#elegirHora {
+    background-color: #3F3F46;
+}
+
+.filaInsertarTiempo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cuentaAtras {
+    display: none;
+}
+
+.hora {
+    text-align: center;
+}
+
+.hora h2, .hora h1 {
+    margin: 0px;
+}

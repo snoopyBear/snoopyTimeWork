@@ -50,6 +50,7 @@ function cambiarCronometro() {
 
         if (s == 60) {
             m += 1;
+            s = 0;
         }
 
     }    

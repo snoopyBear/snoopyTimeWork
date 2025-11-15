@@ -1,0 +1,98 @@
+.notas {
+    width: 100%;
+    grid-column: 2 / 5;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.notasTopBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    /* border: 1px solid pink; */
+    margin-top: 10px;
+}
+
+.notasTopBar > button, .notasTopBar > div > button {
+    margin: 5px;
+    border: 2px solid #3F3F46;
+    background-color: transparent;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+}
+
+#textArea {
+    margin: 20px;
+    background-color: transparent;
+    resize: none;
+    border-radius: 20px;
+    padding: 20px;
+    height: 100%;
+    border: 2px solid #3F3F46;
+    font-size: 16px;
+    overflow-wrap: break-word;
+}
+
+#textArea:focus {
+    outline: none;
+}
+
+.setColor {
+    position: relative;
+}
+
+.notasTopBar > div > div {
+    position: absolute;
+    height: auto; 
+    display: grid;
+    padding: 10px; 
+    background-color: #333333;
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+    display: none;
+}
+
+.filaColores {
+    display: flex;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.filaColores button {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.color {
+    background-color: red;
+    height: 20px; 
+    width: 20px; 
+    border-radius: 50%;
+    border: none;
+    cursor: pointer; 
+    transition: transform 0.2s; 
+}
+
+.color:hover {
+    transform: scale(1.1); 
+}
+
+#panelFuentes button, .efecto {
+    padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: transparent;
+    border: none;
+}
+
+#panelFuentes button:hover {
+    background-color:#3F3F46 ;
+}
+
+.efecto:hover {
+    background-color: #3F3F46;
+}

@@ -1,0 +1,92 @@
+/* CLASES EFECTOS */
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+/* PAGINA */
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    height: 95%;
+    background-color: #171717;
+}
+
+* {
+    font-family: "PierSans-Light";
+    color: white;
+}
+
+.wrapper {
+    display: flex;
+    height: 100%;
+    margin: 40px;
+}
+
+.wrapper > div {
+    border-radius: 10px;
+    background-color: #1F1F1F;
+}
+
+/* ESTILOS GENERALES */
+
+h1 {
+    font-family: "PierSans-Bold";
+    white-space: nowrap; 
+}
+
+button {
+    cursor: pointer;
+}
+
+::selection {
+  background-color: rgba(88, 88, 88, 0.5);
+}
+
+/* TAREA FOCUSED */
+
+.tareaFocusBackground{
+    position: absolute;
+    display: none;
+    backdrop-filter: blur(10px);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.wrapperTareaFocused {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.tareaFocused {
+    min-width: 300px;
+    max-width: 500px;
+    background-color: #3F3F46;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+
+    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.tareaFocused h1 {
+    text-align: center;
+}

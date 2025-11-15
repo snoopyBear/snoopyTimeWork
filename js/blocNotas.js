@@ -107,7 +107,7 @@ function comprobarUnico(numSpan, numTexto, nodes, selection, boton, estilo){
 
                 generarSpanUnico(selection, element, boton.value, estilo)
 
-                limpieza();
+                limpiezaSpansVacios();
                 if (estilo == "color"){
                     panelColores.style.display = "none";
                 } else if (estilo == "tamaño"){
@@ -157,7 +157,6 @@ function generarSpanUnico(selection, element, valor, estilo){
         selectedSpan.style.color = (spanBool) ? element.style.color : "white";
         selectedSpan.setAttribute("class", valor);
         console.log(element.className);
-        
     }
 
     const afterSpan = document.createElement("span");
@@ -258,7 +257,7 @@ function cambiarEstilo(boton, estilo){
         }
 
     }
-    limpieza();
+    limpiezaSpansVacios();
     if (estilo == "color"){
         panelColores.style.display = "none";
     } else if (estilo == "tamaño")
@@ -348,7 +347,7 @@ function obtenerTextoComun(str1, str2) {
 
 }
 
-function limpieza(){
+function limpiezaSpansVacios(){
     
     for (let index = 0; index < textArea.childNodes.length; index++) {
         if (textArea.childNodes[index].innerText || textArea.childNodes[index].data) {
