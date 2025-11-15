@@ -36,10 +36,11 @@ html, body {
     margin: 40px;
 }
 
-.wrapper > div {
+.tareasWrapper, .notas, .cronometro {
     border-radius: 10px;
     background-color: #1F1F1F;
 }
+
 
 /* ESTILOS GENERALES */
 

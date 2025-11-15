@@ -117,6 +117,7 @@ botonAñadir.onclick = function () {
     if (inputDescripcion.value != null && inputDescripcion.value != "") {
         const descripcion = document.createElement("p");
         descripcion.innerText = inputDescripcion.value;
+        descripcion.setAttribute("class", "descripcion");
         texto.appendChild(descripcion);
     }
 

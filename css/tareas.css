@@ -1,7 +1,12 @@
+:root {
+    --ancho-descripcion: 25ch;
+}
+
 .tareasWrapper {
     grid-column: 1;
     padding: 20px;
     width: 400px;
+    min-width: fit-content;
 }
 
 .botonesTareas > button {
@@ -96,11 +101,12 @@
     cursor: pointer;
 }
 
-.texto p {
+.descripcion {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 25ch;
+    width: var(--ancho-descripcion);
+    
 }
 
 .texto h1 {
