@@ -18,5 +18,5 @@ function cambiarHora(){
 
 function cambiarFecha() {
     const today = new Date();
-    fechaTexto.innerText = `${today.getDay().toLocaleString('default', )} ${today.toLocaleString('default', { month: 'long' })} ${today.getFullYear()}`;
+    fechaTexto.innerText = `${today.getDate("DD")} ${today.toLocaleString('default', { month: 'long' })} ${today.getFullYear()}`;
 }

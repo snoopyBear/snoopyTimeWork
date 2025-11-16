@@ -136,7 +136,9 @@ function generarSpanUnico(selection, element, valor, estilo){
     let selectionEnd = selection.focusOffset;
 
     let beforeText = textContent.substring(0, selectionStart);
+    
     let selectedText = textContent.substring(selectionStart, selectionEnd);
+
     let afterText = textContent.substring(selectionEnd);
 
     const beforeSpan = document.createElement("span");
@@ -163,11 +165,16 @@ function generarSpanUnico(selection, element, valor, estilo){
     afterSpan.innerText = afterText;
     afterSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
 
-    
+    if (selectedText != textContent)
 
-    element.parentNode.insertBefore(beforeSpan, element);
+    {
+        element.parentNode.insertBefore(beforeSpan, element);
+    }
     element.parentNode.insertBefore(selectedSpan, element);
-    element.parentNode.insertBefore(afterSpan, element);
+    
+    if (selectedText != textContent) {
+        element.parentNode.insertBefore(afterSpan, element);
+    }
 
     element.parentNode.removeChild(element);
 }
