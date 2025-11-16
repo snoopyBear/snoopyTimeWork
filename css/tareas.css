@@ -106,6 +106,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     width: var(--ancho-descripcion);
+    min-width: 8ch;
     
 }
 
