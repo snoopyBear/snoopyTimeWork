@@ -17,10 +17,17 @@ for (let index = 0; index < botonesInsertarNum.length; index++) {
 }
 
 startCuentaAtras.onclick = function () {
-        
+
+    if (parseInt(tiempo.join("")) == 0) {
+        return;
+    }
+
     intervalo = setInterval(() => {
         cambiarCuentaAtras();
         actualizarTextoCuentaAtras();
+        if (parseInt(tiempo.join("")) == 0) {
+            clearInterval(intervalo);
+        }
     }, 10);
 
 }

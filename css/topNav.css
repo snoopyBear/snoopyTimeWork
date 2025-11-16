@@ -1,0 +1,46 @@
+.topNav {
+    width: inherit;
+    background-color: #1F1F1F;
+    height: 50px;
+    margin: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topNav, .topNav div {
+    display: flex;
+    align-items: center;
+}
+
+#title {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.topNav > div {
+    height: 100%;
+}
+
+.topNav img {
+    height: 20px;
+}
+
+.item {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 0 10px 10px 0;
+}
+
+#export:hover {
+    cursor: pointer;
+    background-color: #3F3F46;
+}

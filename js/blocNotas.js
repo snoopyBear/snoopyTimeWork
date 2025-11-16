@@ -158,7 +158,6 @@ function generarSpanUnico(selection, element, valor, estilo){
         selectedSpan.style.fontSize = (spanBool) ? element.style.fontSize : "16px";
         selectedSpan.style.color = (spanBool) ? element.style.color : "white";
         selectedSpan.setAttribute("class", valor);
-        console.log(element.className);
     }
 
     const afterSpan = document.createElement("span");
@@ -187,6 +186,7 @@ function cambiarEstilo(boton, estilo){
         let textoTotal = selection.toString()
 
         let [listaNodosValidos, numSpan, numTexto] = getNodosValidos(nodes);
+        
 
         if (comprobarUnico(numSpan, numTexto, nodes, selection, boton, estilo)) {
             return;

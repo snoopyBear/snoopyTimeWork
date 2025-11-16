@@ -9,13 +9,15 @@ Hacer funcion general de cambio de estilo con parametro de lo que se cambia para
 La hora  
 Añadir Min-width a la Descripción, y si al arrastrar el widthChanger llega al minWidth que no cambie más  
 Si se selecciona todo el texto y se cambia de color se duplica el último carácter (y si se cambiaba tamaño se duplicaba el texto 2 veces)  
+Parar en 0 el cronometro  
 
 ## TODO
 
+Documentación por dios  
 Poder guardar archivo  
-Sonido cuando suene la cuenta atras a 0 y parar  
 Tema "claro"  
-Traducir a ingles coño que no entienden na
+Traducir a ingles coño que no entienden na  
+Poner sonido al llegar a 0 el cronometro
 
 ## TOFIX
 
