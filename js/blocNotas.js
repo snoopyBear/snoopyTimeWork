@@ -97,13 +97,15 @@ efectos.forEach(efecto => {
 })
 
 function comprobarUnico(numSpan, numTexto, nodes, selection, boton, estilo){
+    console.log(nodes);
+    
     if ((numSpan == 1 && numTexto == 0) || (numTexto == 1 && numSpan == 0)) {
 
         for (let index = 0; index < nodes.length; index++) {
 
             const element = nodes[index];
 
-            if (element.nodeName == "SPAN" || element.nodeName == "#text") {
+            if (element.nodeName == "SPAN" || element.nodeName == "#text" || element.nodeName == "DIV") {
 
                 generarSpanUnico(selection, element, boton.value, estilo)
 
@@ -124,7 +126,7 @@ function comprobarUnico(numSpan, numTexto, nodes, selection, boton, estilo){
 function generarSpanUnico(selection, element, valor, estilo){
     let spanBool;
 
-    if (element.nodeName == "SPAN"){
+    if (element.nodeName == "SPAN" || element.nodeName == "DIV"){
         spanBool = true;
     } else {
         spanBool = false;
@@ -287,6 +289,9 @@ function getNodosValidos(nodes){
             listaNodosValidos.push(element);
             index++;
         } else if (element.nodeName == "#text"){
+            numTexto++;
+            listaNodosValidos.push(element);
+        } else if (element.id == "textArea") {
             numTexto++;
             listaNodosValidos.push(element);
         }

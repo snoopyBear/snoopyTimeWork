@@ -56,19 +56,25 @@ function transformarNotePad (xmlDoc, notepad) {
 
         if (element.nodeName === "SPAN") {
             const span = xmlDoc.createElement("span");
+
+            let atributos = "";
             
             if (element.style.color) {
-                span.setAttribute("color", element.style.color);
+                atributos += ` color:${element.style.color};`;
             }
+
             if (element.style.fontSize) {
-                span.setAttribute("fontSize", element.style.fontSize);
+                atributos += ` font-size:${element.style.fontSize};`;
+                // span.setAttribute("fontSize", element.style.fontSize);
             }
+
+            span.setAttribute("style", atributos);
 
             span.textContent = element.innerText;
             notepad.appendChild(span);
         } else if (element.nodeType === Node.TEXT_NODE) {
             const textNode = xmlDoc.createElement("text");
-            textNode.textContent = element.data.trim();
+            textNode.textContent = element.data;
             notepad.appendChild(textNode);
         }
     }

@@ -9,8 +9,8 @@ const inputDescripcion = document.getElementById("descripcion");
 
 const tareaFocus = document.getElementById("tareaFocus");
 
-const tareasPorHacer = [];
-const tareasCompletadas = [];
+let tareasPorHacer = [];
+let tareasCompletadas = [];
 
 const iconos = document.getElementsByClassName("icon");
 
@@ -102,6 +102,13 @@ tareaFocus.onclick = function () {
 }
 
 botonAñadir.onclick = function () {
+    añadirTareaPorHacer(inputTarea.value, inputDescripcion.value)
+
+    inputTarea.value = "";
+    inputDescripcion.value = "";
+}
+
+function añadirTareaPorHacer(tituloTexto, descripcionTexto) {
     const tarea = document.createElement("div");
     tarea.setAttribute("class", "tarea");
 
@@ -111,12 +118,12 @@ botonAñadir.onclick = function () {
 
     const titulo = document.createElement("h1");
     titulo.innerHTML = `<img class="icon" src="svg/bold_square.svg" alt="Checkbox" width="10" height="10" style="filter: brightness(0) invert(1);" />
-        ${inputTarea.value}`;
+        ${tituloTexto}`;
     texto.appendChild(titulo);
 
-    if (inputDescripcion.value != null && inputDescripcion.value != "") {
+    if ( descripcionTexto != null && descripcionTexto != "") {
         const descripcion = document.createElement("p");
-        descripcion.innerText = inputDescripcion.value;
+        descripcion.innerText = descripcionTexto;
         descripcion.setAttribute("class", "descripcion");
         texto.appendChild(descripcion);
     }
@@ -125,9 +132,6 @@ botonAñadir.onclick = function () {
     tarea.innerHTML += `<button class="completar" onclick="tareaCompletada(this)">Completada</button>`
 
     tareas.appendChild(tarea);
-    inputTarea.value = "";
-    inputDescripcion.value = "";
 
     tareasPorHacer.push(tarea);
-
 }
