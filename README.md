@@ -14,6 +14,7 @@ Poder guardar archivo
 
 ## TODO
 
+El botón de efectos que está a medio terminar  
 Documentación por dios  
 Tema "claro"  
 Traducir a ingles coño que no entienden na  

@@ -102,7 +102,14 @@ tareaFocus.onclick = function () {
 }
 
 botonAñadir.onclick = function () {
-    añadirTareaPorHacer(inputTarea.value, inputDescripcion.value)
+
+    if (inputTarea.value.trim() == "") {
+        inputTarea.value = "";
+        inputDescripcion.value = "";
+        return;
+    }
+
+    añadirTareaPorHacer(inputTarea.value, inputDescripcion.value);
 
     inputTarea.value = "";
     inputDescripcion.value = "";
@@ -117,6 +124,7 @@ function añadirTareaPorHacer(tituloTexto, descripcionTexto) {
     texto.setAttribute("onclick", "focustTarea(this)")
 
     const titulo = document.createElement("h1");
+    
     titulo.innerHTML = `<img class="icon" src="svg/bold_square.svg" alt="Checkbox" width="10" height="10" style="filter: brightness(0) invert(1);" />
         ${tituloTexto}`;
     texto.appendChild(titulo);
