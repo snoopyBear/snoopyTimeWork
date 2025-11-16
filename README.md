@@ -10,6 +10,7 @@ La hora
 
 ## TODO
 
+Añadir Min-width a la Descripción, y si al arrastrar el widthChanger llega al minWidth que no cambie más  
 Poder guardar archivo  
 Sonido cuando suene la cuenta atras a 0 y parar  
 Tema "claro"  
