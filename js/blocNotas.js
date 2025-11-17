@@ -6,8 +6,8 @@ const mostrarPanelColores = document.getElementById("mostrarPanelColores");
 const mostrarPanelTamanyo = document.getElementById("setFontSize");
 const panelFuentes = document.getElementById("panelFuentes");
 
-const mostrarPanelEfectos = document.getElementById("setFontEffect");
-const panelEfectos = document.getElementById("panelEfectos");
+// const mostrarPanelEfectos = document.getElementById("setFontEffect");
+// const panelEfectos = document.getElementById("panelEfectos");
 
 const colores = [["#000101", "#444444", "#656565", "#999999", "#b7b7b7", "#cbcbcb", "#d9d9d9", "#efefef", "#f4f4f4", "#fdfdfd"],
                 ["#970201", "#fe0000", "#fd9800", "#fefe02", "#01ff00", "#37761e", "#4988e8", "#0000f9", "#9c01fd", "#fd00ff"],
@@ -38,13 +38,13 @@ mostrarPanelTamanyo.onclick = function(){
     }
 }
 
-mostrarPanelEfectos.onclick = function () {
-    if (panelEfectos.style.display == "grid"){
-        panelEfectos.style.display = "none";
-    } else {
-        panelEfectos.style.display = "grid";
-    }
-}
+// mostrarPanelEfectos.onclick = function () {
+//     if (panelEfectos.style.display == "grid"){
+//         panelEfectos.style.display = "none";
+//     } else {
+//         panelEfectos.style.display = "grid";
+//     }
+// }
 
 colores.forEach(fila => {
 
@@ -82,19 +82,19 @@ tamanyos.forEach(tamanyo => {
 
 })
 
-efectos.forEach(efecto => {
-    let boton = document.createElement("button");
-    boton.setAttribute("class", "efecto");
-    boton.value = efecto;
-    boton.innerText = efecto;
+// efectos.forEach(efecto => {
+//     let boton = document.createElement("button");
+//     boton.setAttribute("class", "efecto");
+//     boton.value = efecto;
+//     boton.innerText = efecto;
 
-    boton.onclick = function() {
-        cambiarEstilo(this, "efecto");
-    }
+//     boton.onclick = function() {
+//         cambiarEstilo(this, "efecto");
+//     }
 
-    panelEfectos.appendChild(boton);
+//     panelEfectos.appendChild(boton);
 
-})
+// })
 
 function comprobarUnico(numSpan, numTexto, nodes, selection, boton, estilo){
     console.log(nodes);
