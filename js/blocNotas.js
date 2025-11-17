@@ -97,7 +97,6 @@ tamanyos.forEach(tamanyo => {
 // })
 
 function comprobarUnico(numSpan, numTexto, nodes, selection, boton, estilo){
-    console.log(nodes);
     
     if ((numSpan == 1 && numTexto == 0) || (numTexto == 1 && numSpan == 0)) {
 
@@ -196,10 +195,24 @@ function cambiarEstilo(boton, estilo){
 
         for (let index = 0; index < listaNodosValidos.length; index++) {
             const element = listaNodosValidos[index];
+            if (element.nodeName == "DIV" && element.textContent.trim() != textoTotal.trim()) {
+                console.log("No es todo el texto seleccionado");
+                listaNodosValidos.shift();
+                index--;
+                continue;
+            }
+            
+            console.log(element);
+            
+
             let textoComun;
             
 
-            if (element.nodeName == "SPAN" || element.nodeName == "#text") {
+            if (element.nodeName == "SPAN" || element.nodeName == "#text" || element.nodeName == "DIV") {
+
+                if (element.nodeName == "DIV" && element.textContent.trim() == textoTotal.trim()) {
+                    console.log("b");
+                }
 
                 const span = document.createElement("span");
                 if (estilo == "color") {
@@ -232,7 +245,7 @@ function cambiarEstilo(boton, estilo){
                         element.innerText = element.innerText.replace(new RegExp(`${textoComun}$`), "");
                     } else {
                         element.data = element.data.replace(new RegExp(`${textoComun}$`), "");
-                    }
+                    }                    
 
                     textoTotal = textoTotal.replace(new RegExp(`^${textoComun}`), "");
                     
@@ -291,7 +304,8 @@ function getNodosValidos(nodes){
         } else if (element.nodeName == "#text"){
             numTexto++;
             listaNodosValidos.push(element);
-        } else if (element.id == "textArea") {
+        } 
+        else if (element.id == "textArea") {
             numTexto++;
             listaNodosValidos.push(element);
         }
