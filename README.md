@@ -42,7 +42,6 @@ git clone https://github.com/yourUnemployedFriend/workingStation
 ## Known Bugs
 
 - Select all text with Ctrl+A and changing color will delete the whole textArea div
-- Change font size or color sometimes delete the text before for some reason???
 
 ## Credits
 

@@ -193,17 +193,10 @@ function cambiarEstilo(boton, estilo){
             return;
         }
 
-        if (listaNodosValidos.length == 1 && listaNodosValidos[0].id == "textArea") {
-            listaNodosValidos = listaNodosValidos[0].childNodes;
-            console.log(listaNodosValidos);
-            
-        }
+        const cantidadNodosIniciales = textArea.childNodes.length;
 
         for (let index = 0; index < listaNodosValidos.length; index++) {
-            const element = listaNodosValidos[index];
-            
-            console.log(element);
-            
+            const element = listaNodosValidos[index];            
 
             let textoComun;
             
@@ -257,7 +250,9 @@ function cambiarEstilo(boton, estilo){
                     }
                     
                     element.parentNode.insertBefore(span, element);
-                    if (textoTotal == textoComun) {
+                    
+                    
+                    if (textoTotal == textoComun && listaNodosValidos.length == cantidadNodosIniciales) {
                         element.parentNode.removeChild(element);
                     }
                     
@@ -302,10 +297,6 @@ function getNodosValidos(nodes){
             numTexto++;
             listaNodosValidos.push(element);
         } 
-        else if (element.id == "textArea") {
-            numTexto++;
-            listaNodosValidos.push(element);
-        }
         
     }
 
