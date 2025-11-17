@@ -26,7 +26,7 @@ html, body {
 }
 
 * {
-    font-family: "PierSans-Light";
+    font-family: "DuckSans-Regular";
     color: white;
 }
 
@@ -46,7 +46,7 @@ html, body {
 /* ESTILOS GENERALES */
 
 h1 {
-    font-family: "PierSans-Bold";
+    font-family: "DuckSans-Bold";
     white-space: nowrap; 
 }
 

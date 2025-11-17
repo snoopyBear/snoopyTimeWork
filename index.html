@@ -57,7 +57,7 @@
                              Test</h1>
                         <p class="descripcion">Descripcion texto texto texto texto texto texto texto texto</p>
                     </div>
-                    <button class="completar" onclick="tareaCompletada(this)">Completada</button>
+                    <button class="completar" onclick="this.parentElement.remove()">Completada</button>
                 </div>
                 <div class="tarea">
                     <div class="texto" onclick="focustTarea(this)">
@@ -65,7 +65,7 @@
                             <img class="icon" src="svg/bold_square.svg" alt="Checkbox" width="10" height="10" style="filter: brightness(0) invert(1);" />
                             Test</h1>
                     </div>
-                    <button class="completar" onclick="tareaCompletada(this)">Completada</button>
+                    <button class="completar" onclick="this.parentElement.remove()">Completada</button>
                 </div>
             </div>
         </div>
@@ -82,12 +82,12 @@
 
                     </div>
                 </div>
-                <div class="setEffect">
+                <!-- <div class="setEffect">
                     <button id="setFontEffect">Efecto</button>
                     <div id="panelEfectos">
                         
                     </div>
-                </div>
+                </div> -->
                 <div class="setColor">
                     <button class="setColorButton" id="mostrarPanelColores">Color</button>
                     <div id="panelColores">

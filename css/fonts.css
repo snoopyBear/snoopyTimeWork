@@ -1,36 +1,6 @@
 @font-face {
-    font-family: "PierSans-Black";
-    src: url("../fonts/PierSans-Black.otf");
-}
-
-@font-face {
-    font-family: "PierSans-BlackItalic";
-    src: url("../fonts/PierSans-BlackItalic.otf");
-}
-
-@font-face {
-    font-family: "PierSans-Italic";
-    src: url("../fonts/PierSans-Italic.otf");
-}
-
-@font-face {
-    font-family: "PierSans-Medium";
-    src: url("../fonts/PierSans-Medium.otf");
-}
-
-@font-face {
-    font-family: "PierSans-LightItalic";
-    src: url("../fonts/PierSans-LightItalic.otf");
-}
-
-@font-face {
-    font-family: "PierSans-Regular";
-    src: url("../fonts/PierSans-Regular.otf");
-}
-
-@font-face {
-    font-family: "PierSans-BoldItalic";
-    src: url("../fonts/PierSans-BoldItalic.otf");
+    font-family: "PierSans-Bold";
+    src: url("../fonts/PierSans-Bold.otf");
 }
 
 @font-face {
@@ -39,63 +9,8 @@
 }
 
 @font-face {
-    font-family: "PierSans-Bold";
-    src: url("../fonts/PierSans-Bold.otf");
-}
-
-@font-face {
-    font-family: "PierSans-MediumItalic";
-    src: url("../fonts/PierSans-MediumItalic.otf");
-}
-
-@font-face {
-    font-family: "Ubuntu-BoldItalic";
-    src: url("../fonts/Ubuntu-BI.ttf");
-}
-
-@font-face {
-    font-family: "Ubuntu-Bold";
-    src: url("../fonts/Ubuntu-B.ttf");
-}
-
-@font-face {
-    font-family: "Ubuntu-Condensed";
-    src: url("../fonts/Ubuntu-C.ttf");
-}
-
-@font-face {
-    font-family: "Ubuntu-LightItalic";
-    src: url("../fonts/Ubuntu-LI.ttf");
-}
-
-@font-face {
-    font-family: "Ubuntu-Light";
-    src: url("../fonts/Ubuntu-L.ttf");
-}
-
-@font-face {
-    font-family: "Ubuntu-MediumItalic";
-    src: url("../fonts/Ubuntu-MI.ttf");
-}
-
-@font-face {
-    font-family: "UbuntuMono-BoldItalic";
-    src: url("../fonts/UbuntuMono-BI.ttf");
-}
-
-@font-face {
-    font-family: "UbuntuMono-Bold";
-    src: url("../fonts/UbuntuMono-B.ttf");
-}
-
-@font-face {
-    font-family: "UbuntuMono-RegularItalic";
-    src: url("../fonts/UbuntuMono-RI.ttf");
-}
-
-@font-face {
-    font-family: "UbuntuMono-Regular";
-    src: url("../fonts/UbuntuMono-R.ttf");
+    font-family: "PierSans-Medium";
+    src: url("../fonts/PierSans-Medium.otf");
 }
 
 @font-face {
@@ -104,11 +19,16 @@
 }
 
 @font-face {
-    font-family: "Ubuntu-RegularItalic";
-    src: url("../fonts/Ubuntu-RI.ttf");
+    font-family: "DuckSans-Bold";
+    src: url("../fonts/DuckSansProduct-Bold.woff2");
 }
 
 @font-face {
-    font-family: "Ubuntu-Regular";
-    src: url("../fonts/Ubuntu-R.ttf");
+    font-family: "DuckSans-Medium";
+    src: url("../fonts/DuckSansProduct-Medium.woff2");
+}
+
+@font-face {
+    font-family: "DuckSans-Regular";
+    src: url("../fonts/DuckSansProduct-Regular.woff2");
 }
