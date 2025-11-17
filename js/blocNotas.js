@@ -104,7 +104,7 @@ function comprobarUnico(numSpan, numTexto, nodes, selection, boton, estilo){
 
             const element = nodes[index];
 
-            if (element.nodeName == "SPAN" || element.nodeName == "#text" || element.nodeName == "DIV") {
+            if (element.nodeName == "SPAN" || element.nodeName == "#text") {
 
                 generarSpanUnico(selection, element, boton.value, estilo)
 
@@ -125,7 +125,7 @@ function comprobarUnico(numSpan, numTexto, nodes, selection, boton, estilo){
 function generarSpanUnico(selection, element, valor, estilo){
     let spanBool;
 
-    if (element.nodeName == "SPAN" || element.nodeName == "DIV"){
+    if (element.nodeName == "SPAN"){
         spanBool = true;
     } else {
         spanBool = false;
@@ -193,14 +193,14 @@ function cambiarEstilo(boton, estilo){
             return;
         }
 
+        if (listaNodosValidos.length == 1 && listaNodosValidos[0].id == "textArea") {
+            listaNodosValidos = listaNodosValidos[0].childNodes;
+            console.log(listaNodosValidos);
+            
+        }
+
         for (let index = 0; index < listaNodosValidos.length; index++) {
             const element = listaNodosValidos[index];
-            if (element.nodeName == "DIV" && element.textContent.trim() != textoTotal.trim()) {
-                console.log("No es todo el texto seleccionado");
-                listaNodosValidos.shift();
-                index--;
-                continue;
-            }
             
             console.log(element);
             
@@ -208,11 +208,7 @@ function cambiarEstilo(boton, estilo){
             let textoComun;
             
 
-            if (element.nodeName == "SPAN" || element.nodeName == "#text" || element.nodeName == "DIV") {
-
-                if (element.nodeName == "DIV" && element.textContent.trim() == textoTotal.trim()) {
-                    console.log("b");
-                }
+            if (element.nodeName == "SPAN" || element.nodeName == "#text") {
 
                 const span = document.createElement("span");
                 if (estilo == "color") {
@@ -240,12 +236,12 @@ function cambiarEstilo(boton, estilo){
                 span.innerText = textoComun;
 
                 if (index == 0){
-                    
+
                     if (element.nodeName == "SPAN") {
                         element.innerText = element.innerText.replace(new RegExp(`${textoComun}$`), "");
                     } else {
                         element.data = element.data.replace(new RegExp(`${textoComun}$`), "");
-                    }                    
+                    }
 
                     textoTotal = textoTotal.replace(new RegExp(`^${textoComun}`), "");
                     
@@ -259,10 +255,11 @@ function cambiarEstilo(boton, estilo){
                     } else {
                         element.data = element.data.replace(new RegExp(`^${textoComun}`), "");
                     }
-
-                    textoTotal = textoTotal.replace(new RegExp(`^${textoComun}`), "");
                     
                     element.parentNode.insertBefore(span, element);
+                    if (textoTotal == textoComun) {
+                        element.parentNode.removeChild(element);
+                    }
                     
                 } 
                 else {
