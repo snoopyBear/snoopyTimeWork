@@ -20,10 +20,16 @@
         </div>
         <div>
             <div class="item" id="import">
-                <img src="svg/import.svg" alt=""> Importar
+                <img src="svg/import.svg" alt=""> 
+                Importar
             </div>
             <div class="item" id="export">
-                <img src="svg/download.svg" alt=""> Exportar
+                <img src="svg/download.svg" alt=""> 
+                Exportar
+            </div>
+            <div class="item" id="ajustes">
+                <img src="svg/settings.svg" alt="">
+                Ajustes
             </div>
         </div>
     </div>
@@ -53,8 +59,8 @@
                 <div class="tarea">
                     <div class="texto" onclick="focustTarea(this)">
                         <h1 style="font-size: 16px;"><img class="icon" src="svg/bold_square.svg" alt="Checkbox" width="10" height="10" style="filter: brightness(0) invert(1);" />
-                             Test</h1>
-                        <p class="descripcion">Descripcion texto texto texto texto texto texto texto texto</p>
+                            This is a Title</h1>
+                        <p class="descripcion">This is the description (optional)</p>
                     </div>
                     <button class="completar" onclick="this.parentElement.remove()">Completada</button>
                 </div>
@@ -62,7 +68,8 @@
                     <div class="texto" onclick="focustTarea(this)">
                         <h1 style="font-size: 16px;">
                             <img class="icon" src="svg/bold_square.svg" alt="Checkbox" width="10" height="10" style="filter: brightness(0) invert(1);" />
-                            Test</h1>
+                            You can mark it as completed</h1>
+                            <p class="descripcion">Tip: Click on the text, for closing click outside the div</p>
                     </div>
                     <button class="completar" onclick="this.parentElement.remove()">Completada</button>
                 </div>
