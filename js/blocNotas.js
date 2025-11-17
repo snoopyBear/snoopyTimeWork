@@ -188,6 +188,9 @@ function cambiarEstilo(boton, estilo){
 
         let [listaNodosValidos, numSpan, numTexto] = getNodosValidos(nodes);
         
+        if (numSpan == 0 && numTexto == 0) {
+            listaNodosValidos = Array.from(textArea.childNodes);
+        }
 
         if (comprobarUnico(numSpan, numTexto, nodes, selection, boton, estilo)) {
             return;
