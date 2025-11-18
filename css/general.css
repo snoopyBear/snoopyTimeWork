@@ -1,3 +1,12 @@
+/* VARIABLES */
+
+:root {
+    --gray1: #171717;
+    --gray2: #1F1F1F;
+    --gray3: #3F3F46;
+    --gray4: #333333;
+}
+
 /* CLASES EFECTOS */
 
 .bold {
@@ -62,19 +71,22 @@ button {
 
 .tareaFocusBackground{
     position: absolute;
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     backdrop-filter: blur(10px);
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    /* display: none; */
 }
 
 .wrapperTareaFocused {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    display: none;
 }
 
 .tareaFocused {
@@ -91,4 +103,49 @@ button {
 
 .tareaFocused h1 {
     text-align: center;
+}
+
+/* SETTINGS */
+
+.settings {
+    border: 1px solid pink;
+    width: 40%;
+    height: 40%;
+    border-radius: 10px;
+    background-color: var(--gray2);
+    border: 2px solid white;
+    padding: 40px;
+    /* display: none; */
+}
+
+.settingsContent {
+    /* border: 1px solid pink; */
+    width: 80%;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.settingsOption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settingsOption select {
+    background-color: var(--gray3);
+    border: none;
+    height: fit-content;
+    padding: 15px;
+    border-radius: 5px;
+    appearance: none;
+    background-image: url("../svg/dropdown-arrow.svg");
+    background-repeat: no-repeat;    
+    background-position: calc(100% - 5px) center;
+    background-size: 20px;
+    padding-right: 30px;
+}
+
+.settingsOption select:hover {
+    cursor: pointer;
 }

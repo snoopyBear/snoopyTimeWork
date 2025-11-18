@@ -26,6 +26,7 @@ barraTareasBloc.addEventListener("mousedown", function(evento) {
 
 });
 
+
 // barraBlocHora.addEventListener("mousedown", function(evento) {
 
     

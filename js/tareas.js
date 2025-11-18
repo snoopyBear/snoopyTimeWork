@@ -7,12 +7,17 @@ const tareas = document.getElementById("tareas");
 const añadirDescripcion = document.getElementById("añadirDescripcion");
 const inputDescripcion = document.getElementById("descripcion");
 
-const tareaFocus = document.getElementById("tareaFocus");
+const focusBackground = document.getElementById("tareaFocus");
+const wrapperTareaFocused = document.getElementById("wrapperTareaFocused");
 
 let tareasPorHacer = [];
 let tareasCompletadas = [];
 
 const iconos = document.getElementsByClassName("icon");
+
+wrapperTareaFocused.onclick = function (event) {
+    event.stopPropagation();
+}
 
 añadirDescripcion.onclick = function () {
     añadirDescripcion.style.display = "none";
@@ -82,19 +87,20 @@ function focustTarea(textoDiv) {
     }
 
 
-    tareaFocus.style.display = 'block';
+    focusBackground.style.display = 'flex';
+    wrapperTareaFocused.style.display = 'flex';
 
     for (let index = 0; index < iconos.length; index++) {
         const element = iconos[index];
         element.style.display = 'none';
     }
 
-    tareaFocus.getElementsByTagName("h1")[0].innerText = titulo;
-    tareaFocus.getElementsByTagName("p")[0].innerText = descripcion;
+    focusBackground.getElementsByTagName("h1")[0].innerText = titulo;
+    focusBackground.getElementsByTagName("p")[0].innerText = descripcion;
 }
 
-tareaFocus.onclick = function () {
-    tareaFocus.style.display = 'none';
+focusBackground.onclick = function () {
+    focusBackground.style.display = 'none';
     for (let index = 0; index < iconos.length; index++) {
         const element = iconos[index];
         element.style.display = 'inline';
