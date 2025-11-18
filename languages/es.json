@@ -1,0 +1,39 @@
+{
+    "topNavButtons": [
+        "Importar",
+        "Descargar",
+        "Ajustes"
+    ],
+    "todos": {
+        "topButtons": [
+            "Por hacer",
+            "Completadas"
+        ],
+        "title": "Tareas",
+        "createTask": [
+            "Nueva tarea...",
+            "Añadir",
+            "+ Añadir descripción",
+            "Descripción..."
+        ],
+        "completed": "Completada"
+    }, 
+    "notepad": {
+        "topButtons": [
+            "Tamaño",
+            "Color"
+        ]
+    },
+    "hour": {
+        "topButtons": [
+            "Hora",
+            "Cronómetro",
+            "Cuenta Atrás"
+        ],
+        "buttons": [
+            "Empezar",
+            "Parar",
+            "Reiniciar"
+        ]
+    }
+}

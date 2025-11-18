@@ -1,0 +1,39 @@
+{
+    "topNavButtons": [
+        "Import",
+        "Download",
+        "Settings"
+    ],
+    "todos": {
+        "topButtons": [
+            "Not Finished",
+            "Finished"
+        ],
+        "title": "Tasks",
+        "createTask": [
+            "New task...",
+            "Add",
+            "+ Add description",
+            "Description..."
+        ],
+        "completed": "Finished"
+    }, 
+    "notepad": {
+        "topButtons": [
+            "Size",
+            "Color"
+        ]
+    },
+    "hour": {
+        "topButtons": [
+            "Hour",
+            "Stopwatch",
+            "Countdown"
+        ],
+        "buttons": [
+            "Start",
+            "Stop",
+            "Restart"
+        ]
+    }
+}
