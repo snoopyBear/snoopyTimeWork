@@ -79,7 +79,7 @@ button {
     bottom: 0;
     left: 0;
     right: 0;
-    /* display: none; */
+    display: none;
 }
 
 .wrapperTareaFocused {
@@ -115,7 +115,7 @@ button {
     background-color: var(--gray2);
     border: 2px solid white;
     padding: 40px;
-    /* display: none; */
+    display: none;
 }
 
 .settingsContent {

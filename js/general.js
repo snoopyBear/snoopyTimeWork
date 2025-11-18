@@ -8,6 +8,7 @@ const root = document.documentElement;
 
 barraTareasBloc.addEventListener("mousedown", function(evento) {
 
+    tareasWrapper.style.minWidth = 'fit-content';
     let posicionInicial = event.clientX;
     const anchoOriginal = tareasWrapper.offsetWidth;
     const anchoOriginalDescripcion = parseInt(getComputedStyle(descripciones[0]).width.replace("px", ""));

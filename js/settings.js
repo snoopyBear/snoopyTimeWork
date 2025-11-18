@@ -1,11 +1,18 @@
 const settings = document.querySelector('.settings');
 const selectLanguage = document.getElementById("languageSelection");
+const selectSettingsButton = document.getElementById("settings");
 
 settings.onclick = function (event) {
     event.stopPropagation();
 };
 
 selectLanguage.addEventListener("change", changeLanguage);
+selectSettingsButton.addEventListener("click", showSettings);
+
+function showSettings() {
+    focusBackground.style.display = 'flex';
+    settings.style.display = "flex";
+}
 
 function changeLanguage() {
     translateSite(this.value)

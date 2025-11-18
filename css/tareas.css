@@ -6,7 +6,8 @@
     grid-column: 1;
     padding: 20px;
     width: 400px;
-    min-width: fit-content;
+    min-width: 400px;
+    /* min-width: fit-content; */
     overflow: scroll;
 }
 
@@ -113,6 +114,11 @@
 
 .texto h1 {
     font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: var(--ancho-descripcion);
+    min-width: 8ch;
 }
 
 .completar {
