@@ -33,7 +33,7 @@ git clone https://github.com/yourUnemployedFriend/workingStation
 ## Future Plans
 
 - Database for saving the progress
-- Add different languages
+- Add different languages (in progress)
 - Change theme
 - Make the code actually readable ngl
 - The effect button (underline, bold, etc)
@@ -41,7 +41,7 @@ git clone https://github.com/yourUnemployedFriend/workingStation
 
 ## Known Bugs
 
-- Select all text with Ctrl+A and changing color will delete the whole textArea div
+- You can actually select text outside of textArea and change the font color and size smh :sob:
 
 ## Credits
 
